@@ -1,2 +1,2 @@
 # Linear-Regression-
-Linear regression model of machine learning
+Linear regression and Decision tree model of machine learning
