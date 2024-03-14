@@ -12,17 +12,26 @@ The dataset includes information about various cars, each represented by a diffe
 
 | Attribute         | Description                                                                                               |
 |-------------------|-----------------------------------------------------------------------------------------------------------|
-| ID                | Identifier for each car entry.                                                                            |
-| Symboling         | Rating indicating the car's risk level (e.g., insurance risk).                                            |
-| Name              | Car model.                                                                                                |
-| Fuel Types        | Type of fuel used by the car (e.g., gas, diesel).                                                         |
-| Aspiration        | Engine aspiration method (e.g., std for standard, turbo for turbocharged).                                |
-| Door Numbers      | Number of doors on the car.                                                                               |
-| Car Body          | Body style of the car (e.g., sedan, convertible, hatchback).                                               |
-| Drive Wheels      | Type of wheels receiving power from the engine (e.g., fwd for front-wheel drive, rwd for rear-wheel drive).|
-| Engine Location   | Location of the engine in the car (e.g., front, rear).                                                     |
-| ...               | Additional attributes such as engine size, horsepower, etc.                                                |
-| Price             | Car price.                                                                                                |
+| ID                | An identifier for each car entry.                                                                         |
+| Symboling        | A rating assigned to each car indicating its risk level (e.g., insurance risk).                           |
+| Name              | The name or model of the car.                                                                             |
+| Fuel Types        | The type of fuel the car uses (e.g., gas, diesel).                                                        |
+| Aspiration        | The method of aspiration for the engine (e.g., std for standard, turbo for turbocharged).                  |
+| Door Numbers      | The number of doors the car has.                                                                         |
+| Car Body          | The body style of the car (e.g., sedan, convertible, hatchback).                                          |
+| Drive Wheels      | The type of wheels that receive power from the engine (e.g., fwd for front-wheel drive, rwd for rear-wheel drive). |
+| Engine Location   | The location of the engine in the car (e.g., front, rear).                                                |
+| Wheelbase         | The distance between the centers of the front and rear wheels.                                            |
+| Engine Size       | The volume of the engine displacement, often measured in liters or cubic centimeters.                     |
+| Fuel System       | The type of fuel delivery system used by the engine (e.g., mpfi, 2bbl).                                   |
+| Bore Ratio        | The diameter of each cylinder in the engine.                                                              |
+| Stroke            | The length of the piston stroke in the engine.                                                            |
+| Compression Ratio | The ratio of the volume of the combustion chamber when the piston is at the bottom of its stroke to the volume when it's at the top. |
+| Horsepower        | The power output of the engine.                                                                           |
+| Peak RPM          | The maximum revolutions per minute of the engine.                                                         |
+| City MPG          | The estimated miles per gallon (MPG) the car can achieve in city driving conditions.                      |
+| Highway MPG       | The estimated miles per gallon (MPG) the car can achieve on the highway.                                  |
+| Price             | The price of the car.                                                                                    |
 
 ## 4. Methodology
 
