@@ -16,26 +16,84 @@ We utilize a decision tree classifier with the entropy criterion for our analysi
 
 - **Importing Required Libraries**:
   - Imports necessary libraries for data handling, model building, evaluation, and visualization.
+```python
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import pandas as pd
+import category_encoders as ce
+from sklearn.metrics import accuracy_score
+from matplotlib import pyplot as plt
+import pickle
+import pandas as pd
+from sklearn import tree
+```
 
 - **Loading Data**:
   - Reads the car evaluation dataset into a pandas DataFrame.
+```python
+df = pd.read_csv('car_evaluation.csv')
+```
 
 - **EDA**:
   - Provides an overview of the dataset, examining its structure, information, and missing values.
   - Analyzes the distribution of categorical variables and class distribution.
+Data Overview
+
+```python
+print(df.head())
+df.shape
+df.info()
+df.isnull().sum()
+```
+Examining the value counts of categorical variables
+
+```python
+col_names = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'class']
+for col in col_names:
+  print(df[col].value_counts())
+```
+
+Analysis of `class` distribution
+
+```python
+df['class'].value_counts()
+```
+Feature-Target Separation
+
+```python
+X = df.drop(['class'], axis=1)
+y = df['class']
+```
+
 
 - **Data Preparation**:
   - Separates features and target variables.
   - Splits the data into training and testing sets.
+```python
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.33, random_state=42)
+```
 
 - **Data Encoding**:
   - Encodes categorical variables using ordinal encoding.
+```python
+encoder = ce.OrdinalEncoder(cols=['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety'])
+X_train = encoder.fit_transform(X_train)
+X_test = encoder.transform(X_test)
+```
 
 - **Model Creation**:
   - Initializes a Decision Tree Classifier with the entropy criterion.
+```python
+clf = DecisionTreeClassifier(criterion="entropy")
+```
 
 - **Model Training**:
   - Trains the classifier on the training set.
+```python
+clf.fit(X_train, y_train)
+```
 
 - **Model Performance Evaluation**:
   - Assesses the classifier's performance on the training and testing sets.
@@ -47,6 +105,16 @@ We utilize a decision tree classifier with the entropy criterion for our analysi
 - **Systematic Analysis**:
   - Performs a systematic analysis by varying tree depth and min samples split parameters.
   - Records accuracy scores for each parameter combination.
+```python
+for depth in depths:
+    for min_samples_split in min_samples_splits:
+        # Create and train decision tree classifier
+        clf = DecisionTreeClassifier(criterion="entropy", max_depth=depth, min_samples_split=min_samples_split, random_state=42)
+        clf.fit(X_train, y_train)
+```
+- **Decision Tree Accuracy vs. Min Samples Split**
+
+![min_samples](https://github.com/Rahul-Biju-03/Python-For-ML/assets/106422354/f5dd4409-7a82-4bfa-94cc-bf3ea3813f10)
 
 ## 6. Result
 
