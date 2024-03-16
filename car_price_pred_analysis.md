@@ -60,33 +60,82 @@ Visualize actual vs. predicted prices and plot regression lines to understand pr
 
 - **Importing Required Libraries**:
   - Imports necessary libraries and modules for building and evaluating a linear regression model.
+```python 
+import pickle
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+```
 
 - **Loading Data**:
   - Reads the data from a CSV file into a pandas DataFrame.
+```python
+df = pd.read_csv('car_dataset.csv')
+```
+
 
 - **EDA**:
   - Inspects the data, summarizes statistics, explores unique values, and identifies columns.
+```python
+# check the shape
+df.shape
+# first five rows of the dataframe
+df.head()
+# describe the dataframe with some statistical info
+df.describe()
+# check data types in the dataframe
+df.info()
+# check unique data for each feature in the dataframe
+df.nunique()
+# column names of the dataframe
+df.columns
+```
 
 - **Data Selection**:
   - Selects numerical columns for analysis.
-
+```python
+numerical_columns = ['wheelbase', 'enginesize', 'boreratio', 'stroke', 'compressionratio', 'horsepower', 'peakrpm', 'citympg']
+```
+  
 - **Correlation Analysis**:
   - Calculates correlation coefficients between numerical features and the target variable ('price').
+```python
+# Calculate correlation coefficients with respect to "price"
+correlation_with_price = df[numerical_columns].corrwith(df['price']).abs().sort_values(ascending=False)
+```
 
 - **Creating a New DataFrame**:
   - Creates a new DataFrame using 'enginesize' and 'price' for model training.
+```python
+x = new_df['enginesize']
+y = new_df['price']
+```
 
 - **Splitting Data**:
   - Splits the data into training and testing sets.
+```python
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
+```
 
 - **Model Creation**:
   - Initializes a Linear Regression model.
+```python
+model = LinearRegression()
+```
 
 - **Model Training**:
   - Fits the model to the training data.
+```python
+model.fit(x_train.values.reshape(-1,1), y_train)
+```
 
-- **Evaluation Metrics**:
-  - Calculates evaluation metrics including MSE, RMSE, MAE, and R2 score.
+- **Evaluation metric - R2**
+  - Calculates evaluation metric - R2 score.
 
 - **Plotting Actual vs. Predicted Values**:
   - Visualizes the relationship between actual and predicted prices.
@@ -97,14 +146,71 @@ Visualize actual vs. predicted prices and plot regression lines to understand pr
 - **Predicting Prices based on Engine Size**:
   - Generates predicted prices based on engine size.
 
+| Engine Size | Predicted Price |
+|-------------|-----------------|
+| 91          | 7339.34         |
+| 161         | 18841.42        |
+| 136         | 14733.53        |
+| 61          | 2409.87         |
+| 109         | 10297.01        |
+| 146         | 16376.69        |
+| 92          | 7503.65         |
+| 92          | 7503.65         |
+| 181         | 22127.73        |
+| 92          | 7503.65         |
+| 164         | 19334.36        |
+| 203         | 25742.67        |
+| 70          | 3888.71         |
+| 134         | 14404.90        |
+| 90          | 7175.02         |
+| 146         | 16376.69        |
+| 132         | 14076.27        |
+| 136         | 14733.53        |
+| 110         | 10461.33        |
+| 92          | 7503.65         |
+| 110         | 10461.33        |
+| 120         | 12104.48        |
+| 132         | 14076.27        |
+| 146         | 16376.69        |
+| 171         | 20484.57        |
+| 97          | 8325.23         |
+| 98          | 8489.54         |
+| 120         | 12104.48        |
+| 98          | 8489.54         |
+| 97          | 8325.23         |
+| 109         | 10297.01        |
+| 109         | 10297.01        |
+| 151         | 17198.26        |
+| 122         | 12433.11        |
+| 97          | 8325.23         |
+| 209         | 26728.56        |
+| 109         | 10297.01        |
+| 121         | 12268.80        |
+| 90          | 7175.02         |
+| 304         | 42338.53        |
+| 90          | 7175.02         |
+
 ## 6. Result
 
-- Key Findings:
-  - Engine size is identified as the most influential feature in determining car prices.
-  - The linear regression model demonstrates reasonable performance in predicting car prices.
-  - Evaluation metrics indicate the model captures a significant portion of the variance in car prices.
+Following an extensive analysis and the implementation of a linear regression model, we have successfully created a predictive framework for estimating car prices based on engine size. Here are the key observations and outcomes:
+
+**Key Observations:**
+- **Feature Importance:** Engine size emerges as the most critical factor in determining car prices. It showcases the highest correlation coefficient with the target variable (price) compared to other numerical attributes examined in the dataset.
+  
+**Model Performance:** The linear regression model exhibits satisfactory performance in predicting car prices, as indicated by an R-squared (R2) score of approximately 0.78. This score suggests that the model captures a considerable portion of the variance in the target variable, reflecting a reasonable level of predictive accuracy.
+
+**Insights from Predictions:** Despite the inherent variability in car prices, the model's predictions align closely with actual prices. Evaluation metrics and scatter plot visualizations validate the model's effectiveness in estimating car prices based on engine size, providing valuable insights for decision-making processes.
+
+Overall, through meticulous analysis and modeling efforts, we have developed a robust framework capable of reliably estimating car prices, with engine size serving as a pivotal determinant.
 
 ## 7. Conclusion
 
-In conclusion, this project successfully develops a predictive model for estimating car prices based on various attributes, with a focus on engine size. The model provides valuable insights for stakeholders in the automotive industry, aiding in pricing strategies and decision-making processes. Further enhancements and refinements to the model could improve its predictive accuracy and broaden its applicability.
+This project has successfully developed a predictive model for estimating car prices based on various attributes, with a particular emphasis on engine size. The findings highlight the importance of engine size in determining car prices, suggesting that it serves as a significant factor for both buyers and sellers to consider.
+
+Moving forward, further enhancements and refinements to the model could be explored to improve its predictive accuracy and broaden its applicability. Additionally, incorporating additional features and exploring advanced modeling techniques may offer deeper insights into the complex dynamics of car pricing in the automotive market.
+
+Overall, the developed model represents a valuable tool for stakeholders in the automotive industry, providing actionable insights that can inform pricing strategies, facilitate decision-making processes, and ultimately enhance the overall efficiency and effectiveness of operations within the industry.
+
+
+
 
