@@ -115,6 +115,10 @@ correlation_with_price = df[numerical_columns].corrwith(df['price']).abs().sort_
 x = new_df['enginesize']
 y = new_df['price']
 ```
+Comparing Engine Size and Fuel Type with Price using Scatter Plot
+
+![](https://github.com/jobinjoy12/Linear-Regression-and-decision-tree/blob/main/images/Screenshot%202024-03-16%20211933.png?raw=true)
+![](https://github.com/jobinjoy12/Linear-Regression-and-decision-tree/blob/main/images/Screenshot%202024-03-16%20212018.png?raw=true)
 
 - **Splitting Data**:
   - Splits the data into training and testing sets.
@@ -139,9 +143,12 @@ model.fit(x_train.values.reshape(-1,1), y_train)
 
 - **Plotting Actual vs. Predicted Values**:
   - Visualizes the relationship between actual and predicted prices.
-
+  
+![](https://github.com/jobinjoy12/Linear-Regression-and-decision-tree/blob/main/images/Screenshot%202024-03-16%20212116.png?raw=true)
 - **Plotting Regression Model Line**:
   - Plots the regression line to visualize the model's fit.
+  
+![](https://github.com/jobinjoy12/Linear-Regression-and-decision-tree/blob/main/images/Screenshot%202024-03-16%20212128.png?raw=true)
 
 - **Predicting Prices based on Engine Size**:
   - Generates predicted prices based on engine size.
