@@ -101,6 +101,7 @@ clf.fit(X_train, y_train)
 
 - **Graphical Representation of Decision Tree**:
   - Visualizes the decision tree classifier.
+![](https://github.com/jobinjoy12/Linear-Regression-and-decision-tree/blob/main/images/Screenshot%202024-03-16%20214929.png?raw=true)
 
 - **Systematic Analysis**:
   - Performs a systematic analysis by varying tree depth and min samples split parameters.
@@ -112,9 +113,30 @@ for depth in depths:
         clf = DecisionTreeClassifier(criterion="entropy", max_depth=depth, min_samples_split=min_samples_split, random_state=42)
         clf.fit(X_train, y_train)
 ```
+| Depth | Min Samples Split | Accuracy |
+|-------|-------------------|----------|
+|   3   |         2         |  0.8053  |
+|   3   |         5         |  0.8053  |
+|   3   |         10        |  0.8053  |
+|   3   |         20        |  0.8053  |
+|   5   |         2         |  0.8789  |
+|   5   |         5         |  0.8789  |
+|   5   |         10        |  0.8789  |
+|   5   |         20        |  0.8789  |
+|   7   |         2         |  0.9281  |
+|   7   |         5         |  0.9281  |
+|   7   |         10        |  0.9281  |
+|   7   |         20        |  0.9333  |
+|   9   |         2         |  0.9614  |
+|   9   |         5         |  0.9561  |
+|   9   |         10        |  0.9368  |
+|   9   |         20        |  0.9404  |
+
+Best Parameters (Depth, Min Samples Split, Accuracy): (9, 2, 0.9614035087719298)
+
 - **Decision Tree Accuracy vs. Min Samples Split**
 
-![min_samples](https://github.com/Rahul-Biju-03/Python-For-ML/assets/106422354/f5dd4409-7a82-4bfa-94cc-bf3ea3813f10)
+![](https://github.com/jobinjoy12/Linear-Regression-and-decision-tree/blob/main/images/Screenshot%202024-03-16%20214537.png?raw=true)
 
 ## 6. Result
 
